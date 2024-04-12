@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dropdown Image Selection</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    background-image: url('https://i.ibb.co/6Xdh4gs/image-from-rawpixel-id-6034956-original.jpg'); /* Replace 'background.jpg' with your image path */
+    background-size: cover; /* Cover the entire viewport */
+    color: white;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    position: relative;
+  }
+  
+  h1 {
+  text-align: center;
+  padding: 10px;
+  }
+
+  #dropdown-container {
+    position: absolute;
+    top: 45px; /* Adjust as needed */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    z-index: 1; /* Ensure dropdown appears above images */
+  }
+
+  #image-container {
+    position: absolute;
+    top: 105px; /* Adjust as needed */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+  }
+
+  #dropdown {
+    background-color: #333; /* Dropdown background color */
+    color: white; /* Dropdown text color */
+    border: none; /* Remove default border */
+    padding: 10px; /* Add padding */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+  }
+
+  #dropdown option {
+    background-color: #222; /* Dropdown option background color */
+  }
+
+  .image-container {
+    display: none;
+  }
+  
+  #option1 {
+  display: block;
+  }
+
+  .image-container img {
+    max-width: 100%; /* Ensure images don't exceed container width */
+	max-height: 100%;
+  }
+</style>
+</head>
+<body>
+
+<h1>THE MOON:</h1>
+
+<div id="dropdown-container">
+  <select id="dropdown" onchange="showImage()">
+    <option value="option1">144p</option>
+    <option value="option2">360p</option>
+    <option value="option3">720p</option>
+    <option value="option4">1080p</option>
+    <option value="option5">4k</option>
+  </select>
+</div>
+
+<div id="image-container">
+  <div class="image-container" id="option1">
+    <img src="https://i.ibb.co/C7DCwHx/moon144bgr.png" alt="The Moon 144p not found :\" style="filter: blur(2px)">
+  </div>
+
+  <div class="image-container" id="option2">
+    <img src="https://i.ibb.co/5nkqNBN/moon480pbgr.png" alt="The Moon 360p not found :\" style="filter: blur(1.5px)">
+  </div>
+
+  <div class="image-container" id="option3">
+    <img src="https://i.ibb.co/CPgzV31/moon720bgr.png" alt="The Moon 720p not found :\" style="filter: blur(1px)">
+  </div>
+
+  <div class="image-container" id="option4">
+    <img src="https://i.ibb.co/pJ4SYkQ/moon1080bgr.png" alt="The Moon 1080p not found :\">
+  </div>
+  
+  <div class="image-container" id="option5">
+    <img src="https://i.ibb.co/tmV46Xq/moon4k.jpg" alt="The Moon 4k not found :\">
+  </div>
+</div>
+
+<script>
+function showImage() {
+  var dropdown = document.getElementById("dropdown");
+  var selectedValue = dropdown.options[dropdown.selectedIndex].value;
+
+  // Hide all image containers
+  var imageContainers = document.getElementsByClassName("image-container");
+  for (var i = 0; i < imageContainers.length; i++) {
+    imageContainers[i].style.display = "none";
+  }
+
+  // Show the selected image container
+  document.getElementById(selectedValue).style.display = "block";
+}
+</script>
+
+</body>
+</html>
